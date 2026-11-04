@@ -1,6 +1,6 @@
 {
     "name": "@sdsmith1981/game-platform",
-    "version": "0.3.0",
+    "version": "0.4.0",
     "private": true,
     "type": "module",
     "description": "Vue components and TypeScript helpers shared by sdsmith1981's browser games.",
@@ -9,7 +9,10 @@
         "./billing": "./resources/js/lib/billing.ts",
         "./playTime": "./resources/js/lib/playTime.ts",
         "./xsrf": "./resources/js/lib/xsrf.ts",
-        "./saving": "./resources/js/lib/saving.ts"
+        "./saving": "./resources/js/lib/saving.ts",
+        "./offline/store": "./resources/js/offline/store.ts",
+        "./offline/sync": "./resources/js/offline/sync.ts",
+        "./offline/register": "./resources/js/offline/register.ts"
     },
     "files": [
         "resources/js"
