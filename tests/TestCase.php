@@ -4,6 +4,7 @@ namespace GamePlatform\Tests;
 
 use GamePlatform\GamePlatformServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Inertia\ServiceProvider as InertiaServiceProvider;
 use Laravel\Fortify\Features;
 use Laravel\Fortify\FortifyServiceProvider;
 use Laravel\Socialite\SocialiteServiceProvider;
@@ -16,7 +17,7 @@ abstract class TestCase extends Orchestra
 
     protected function getPackageProviders($app): array
     {
-        return [SocialiteServiceProvider::class, FortifyServiceProvider::class, GamePlatformServiceProvider::class];
+        return [InertiaServiceProvider::class, SocialiteServiceProvider::class, FortifyServiceProvider::class, GamePlatformServiceProvider::class];
     }
 
     protected function defineEnvironment($app): void
@@ -29,6 +30,12 @@ abstract class TestCase extends Orchestra
         $app['config']->set('auth.providers.users.model', User::class);
         $app['config']->set('fortify.home', '/dashboard');
         $app['config']->set('fortify.features', [Features::twoFactorAuthentication()]);
+
+        $app['config']->set('billing.products', [
+            'day' => ['name' => '24 hours of play-time', 'description' => 'A day.', 'price' => 100, 'seconds' => 24 * 3600],
+            'month' => ['name' => '30 days of play-time', 'description' => 'A month.', 'price' => 1000, 'seconds' => 30 * 24 * 3600],
+        ]);
+        $app['config']->set('legal.terms_version', '2026-10-01');
 
         foreach (['google', 'facebook', 'github'] as $provider) {
             $app['config']->set("services.{$provider}", [

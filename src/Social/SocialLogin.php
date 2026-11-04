@@ -2,6 +2,7 @@
 
 namespace GamePlatform\Social;
 
+use GamePlatform\Platform;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Config;
 use Laravel\Socialite\Contracts\User as SocialUser;
@@ -71,7 +72,6 @@ class SocialLogin
     /** @return class-string<Authenticatable> */
     public static function userModel(): string
     {
-        /** @var class-string<Authenticatable> */
-        return Config::string('game-platform.user_model');
+        return Platform::userModel();
     }
 }

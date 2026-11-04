@@ -5,7 +5,10 @@
     "type": "module",
     "description": "Vue components and TypeScript helpers shared by sdsmith1981's browser games.",
     "exports": {
-        "./components/*": "./resources/js/components/*"
+        "./components/*": "./resources/js/components/*",
+        "./billing": "./resources/js/lib/billing.ts",
+        "./playTime": "./resources/js/lib/playTime.ts",
+        "./xsrf": "./resources/js/lib/xsrf.ts"
     },
     "files": [
         "resources/js"
