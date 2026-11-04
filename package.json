@@ -1,0 +1,16 @@
+{
+    "name": "@sdsmith1981/game-platform",
+    "version": "0.1.0",
+    "private": true,
+    "type": "module",
+    "description": "Vue components and TypeScript helpers shared by sdsmith1981's browser games.",
+    "exports": {
+        "./components/*": "./resources/js/components/*"
+    },
+    "files": [
+        "resources/js"
+    ],
+    "peerDependencies": {
+        "vue": "^3.5.0"
+    }
+}
