@@ -16,4 +16,14 @@ return [
             'github' => 'GitHub',
         ],
     ],
+
+    'ops' => [
+        // Register the client-errors, whats-new/seen and feedback routes.
+        'routes' => true,
+    ],
+
+    'stats' => [
+        // Count checkouts, payments and players coming back in daily_stats.
+        'billing' => true,
+    ],
 ];

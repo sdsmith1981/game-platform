@@ -12,7 +12,8 @@
         "./saving": "./resources/js/lib/saving.ts",
         "./offline/store": "./resources/js/offline/store.ts",
         "./offline/sync": "./resources/js/offline/sync.ts",
-        "./offline/register": "./resources/js/offline/register.ts"
+        "./offline/register": "./resources/js/offline/register.ts",
+        "./errorLog": "./resources/js/lib/errorLog.ts"
     },
     "files": [
         "resources/js"
