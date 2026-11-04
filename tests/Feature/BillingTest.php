@@ -75,6 +75,7 @@ test('only time between check-ins while playing is counted', function () {
 });
 
 test('play-time runs out', function () {
+    $this->freezeTime();
     $user = player(['play_seconds_used' => 7180, 'last_played_at' => now()]);
     $this->travel(60)->seconds();
 
@@ -101,6 +102,7 @@ test("a game's free play counts toward its own limit, not play-time", function (
             return $game === 'tutorial' ? $this->session : null;
         }
     });
+    $this->freezeTime();
     $user = player(['play_seconds_used' => 7200, 'last_played_at' => now()]);
     $this->travel(60)->seconds();
 
@@ -165,8 +167,8 @@ test("a listener that fails doesn't stop the payment", function () {
 });
 
 test('the month adds 720 hours of play-time, used only while playing', function () {
-    $user = player(['play_seconds_used' => 7200, 'last_played_at' => now()]);
     $this->freezeTime();
+    $user = player(['play_seconds_used' => 7200, 'last_played_at' => now()]);
 
     PlayTime::fulfil(purchase($user, 'month', 'cs_a'));
     PlayTime::fulfil(purchase($user, 'month', 'cs_b'));
@@ -182,8 +184,8 @@ test('the month adds 720 hours of play-time, used only while playing', function 
 });
 
 test('an old unlimited pass still lasts until its end date', function () {
-    $user = player(['play_seconds_used' => 7200, 'last_played_at' => now(), 'unlimited_until' => now()->addDays(5)]);
     $this->freezeTime();
+    $user = player(['play_seconds_used' => 7200, 'last_played_at' => now(), 'unlimited_until' => now()->addDays(5)]);
 
     $this->travel(60)->seconds();
     PlayTime::record($user, false);
